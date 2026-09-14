@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>México - Jornada Institucional | ISFD Cecilia Braslavsky</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #2b2b2b;
+      line-height: 1.6;
+    }
+
+    /* Navegación */
+    header {
+      background-color: #006847; /* Verde bandera */
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav h1 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #e5a93c;
+    }
+
+    /* Hero / Carrusel */
+    .hero-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .slider-container {
+      width: 100%;
+      height: 480px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      background-color: #1a1a1a;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+      color: #fff;
+      padding: 1.5rem 1rem 1rem 1rem;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .status-msg {
+      color: #eee;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* Contenido general */
+    section {
+      max-width: 1000px;
+      margin: 3.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h2 {
+      color: #006847;
+      border-bottom: 3px solid #ce1126; /* Rojo bandera */
+      display: inline-block;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.3rem;
+      font-size: 1.6rem;
+    }
+
+    p {
+      text-align: justify;
+      color: #444;
+      font-size: 1.02rem;
+    }
+
+    /* Grillas informativas */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      border-left: 5px solid #006847;
+      padding: 1.4rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      color: #ce1126;
+      margin-bottom: 0.6rem;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background-color: #1f2421;
+      color: #bbb;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 5rem;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .slider-container {
+        height: 320px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>Jornada ISFD Cecilia Braslavsky — México</h1>
+      <ul>
+        <li><a href="#inicio">Fotos en Vivo</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#geografia">Geografía</a></li>
+        <li><a href="#ciudades">Ciudades</a></li>
+        <li><a href="#turismo">Turismo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inicio" class="hero-section">
+    <div class="slider-container" id="sliderContainer">
+      <div class="slide active">
+        <div class="status-msg" id="statusMessage">Cargando fotos del evento en tiempo real...</div>
+      </div>
+    </div>
+  </main>
+
+  <section id="historia">
+    <h2>Historia</h2>
+    <p>México posee una herencia histórica milenaria. Las culturas prehispánicas como los mayas, mexicas (aztecas), zapotecas y mixtecos establecieron complejos centros urbanos y conocimientos avanzados. Tras el proceso de conquista y el período colonial del Virreinato de la Nueva España (1521–1821), el país inició su gesta libertaria, continuada durante el siglo XIX y consolidada tras la Revolución Mexicana de 1910, un hito que redefinió los derechos sociales y la identidad nacional.</p>
+  </section>
+
+  <section id="geografia">
+    <h2>Geografía</h2>
+    <p>Situado en la región meridional de América del Norte, limita al norte con Estados Unidos y hacia el sureste con Guatemala y Belice. Su geografía integra cadenas montañosas (Sierra Madre Occidental y Oriental), mesetas templadas, zonas desérticas y bosques tropicales húmedos, junto a una extensa fachada marina sobre el Océano Pacífico, el Golfo de California, el Golfo de México y el Mar Caribe.</p>
+  </section>
+
+  <section id="ciudades">
+    <h2>Ciudades Principales</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Ciudad de México (CDMX)</h3>
+        <p>Centro neurálgico, cultural y económico del país, erigido sobre el valle lacustre de México y colmado de sitios patrimoniales y museos.</p>
+      </div>
+      <div class="card">
+        <h3>Guadalajara</h3>
+        <p>Capital de Jalisco y referente de elementos identitarios tradicionales como la música de mariachi y la charrería, destacando además como núcleo tecnológico y educativo.</p>
+      </div>
+      <div class="card">
+        <h3>Monterrey</h3>
+        <p>Principal polo productivo e industrial del norte mexicano, situado al pie del característico Cerro de la Silla.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="turismo">
+    <h2>Patrimonio y Turismo</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Zonas Arqueológicas</h3>
+        <p>Monumentos prehispánicos emblemáticos reconocidos a nivel global, entre ellos Chichén Itzá, Teotihuacán, Palenque y Monte Albán.</p>
+      </div>
+      <div class="card">
+        <h3>Pueblos Mágicos y Ciudades Coloniales</h3>
+        <p>Enclaves de gran riqueza patrimonial, tradiciones vivas y gastronomía típica como Oaxaca, San Miguel de Allende, Guanajuato y Taxco.</p>
+      </div>
+      <div class="card">
+        <h3>Riviera Maya y Costas del Pacífico</h3>
+        <p>Destinos de relevancia internacional por sus recursos naturales y playas, como Tulum, Cancún, Puerto Vallarta y Los Cabos.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Jornada Institucional — ISFD Cecilia Braslavsky</p>
+  </footer>
+
+  <script>
+    // URL de tu Web App desplegada en Google Apps Script
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyn1icOBbOHxysGDcwjls0ge7vIzxWdhtsrdrRIkROjCjTWBpDKoMdtToRCVCSj6TmWw/exec";
+
+    let fotos = [];
+    let indiceActual = 0;
+    let intervaloRotacion = null;
+    const container = document.getElementById('sliderContainer');
+    const statusMsg = document.getElementById('statusMessage');
+
+    async function actualizarFotos() {
+      try {
+        const respuesta = await fetch(SCRIPT_URL);
+        const data = await respuesta.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+          const idsNuevos = data.map(f => f.id).join(',');
+          const idsActuales = fotos.map(f => f.id).join(',');
+
+          // Si hay fotos nuevas o es la primera carga
+          if (idsNuevos !== idsActuales) {
+            fotos = data;
+            renderizarCarrusel();
+          }
+        } else if (fotos.length === 0) {
+          statusMsg.textContent = "Aún no se han subido fotos a la carpeta de Drive.";
+        }
+      } catch (error) {
+        console.error("Error al obtener las fotos:", error);
+        if (fotos.length === 0) {
+          statusMsg.textContent = "Conectando con Google Drive...";
+        }
+      }
+    }
+
+    function renderizarCarrusel() {
+      container.innerHTML = '';
+      
+      fotos.forEach((foto, i) => {
+        const slide = document.createElement('div');
+        slide.className = `slide ${i === 0 ? 'active' : ''}`;
+        slide.innerHTML = `
+          <img src="${foto.url}" alt="${foto.name || 'Foto de la jornada'}">
+          <div class="slide-caption">Jornada Institucional — En vivo</div>
+        `;
+        container.appendChild(slide);
+      });
+
+      indiceActual = 0;
+
+      // Reiniciar intervalo de rotación
+      if (intervaloRotacion) clearInterval(intervaloRotacion);
+      if (fotos.length > 1) {
+        intervaloRotacion = setInterval(avanzarSlide, 5000); // Rota cada 5 segundos
+      }
+    }
+
+    function avanzarSlide() {
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length <= 1) return;
+
+      slides[indiceActual].classList.remove('active');
+      indiceActual = (indiceActual + 1) % slides.length;
+      slides[indiceActual].classList.add('active');
+    }
+
+    // Consulta inicial inmediata
+    actualizarFotos();
+
+    // Consulta la carpeta cada 20 segundos para sumar fotos nuevas automáticamente
+    setInterval(actualizarFotos, 20000);
+  </script>
+</body>
+</html>
