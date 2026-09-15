@@ -207,14 +207,19 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     .slider-container {
       width: 100%;
-      height: 440px;
+      height: 480px;
       position: relative;
       overflow: hidden;
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      background-color: #1a1a1a;
+      background-color: #000000; /* Fondo oscuro para fotos enteras */
     }
 
     .slide {
@@ -222,17 +227,21 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 0.8s ease-in-out;
+      transition: opacity 0.6s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .slide.active {
       opacity: 1;
     }
 
+    /* Fotos completas sin recorte */
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* Garantiza visualización completa */
     }
 
     .slide-caption {
@@ -240,17 +249,51 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
       color: #fff;
-      padding: 1.5rem 1rem 1rem 1rem;
+      padding: 1.5rem 1rem 0.8rem 1rem;
       text-align: center;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
+    }
+
+    /* Flechas de Navegación Manual */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      z-index: 10;
+      transition: background 0.25s, transform 0.2s;
+      user-select: none;
+    }
+
+    .slider-btn:hover {
+      background: #006847;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider-btn.prev {
+      left: 14px;
+    }
+
+    .slider-btn.next {
+      right: 14px;
     }
 
     .status-msg {
       color: #ddd;
       text-align: center;
-      padding: 190px 1rem 0;
+      padding: 210px 1rem 0;
       font-size: 1rem;
     }
 
@@ -264,7 +307,7 @@
     .video-responsive {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Relación 16:9 */
+      padding-bottom: 56.25%; /* 16:9 */
       height: 0;
       overflow: hidden;
       border-radius: 14px;
@@ -487,7 +530,7 @@
     }
 
     @media (max-width: 768px) {
-      .slider-container { height: 280px; }
+      .slider-container { height: 320px; }
       nav { flex-direction: column; gap: 0.8rem; }
       .detail-modal { padding: 1.2rem; }
     }
@@ -590,19 +633,23 @@
     </div>
   </div>
 
-  <!-- CARRUSEL DE FOTOS EN VIVO (GOOGLE DRIVE) -->
+  <!-- CARRUSEL DE FOTOS EN VIVO (DRIVE) CON BOTONES MANUALES -->
   <div id="fotos" class="hero-section">
     <div class="slider-title">
       <span class="live-dot"></span> Galería en Vivo desde Google Drive
     </div>
-    <div class="slider-container" id="sliderContainer">
-      <div class="slide active">
-        <div class="status-msg" id="statusMessage">Conectando con la carpeta de fotos...</div>
+    <div class="slider-wrapper">
+      <button class="slider-btn prev" onclick="cambiarFotoManual(-1)" title="Foto anterior">&#10094;</button>
+      <div class="slider-container" id="sliderContainer">
+        <div class="slide active">
+          <div class="status-msg" id="statusMessage">Conectando con la carpeta de fotos...</div>
+        </div>
       </div>
+      <button class="slider-btn next" onclick="cambiarFotoManual(1)" title="Siguiente foto">&#10095;</button>
     </div>
   </div>
 
-  <!-- SECCIÓN DE TRANSMISIÓN EN VIVO (YOUTUBE AUTOPLAY RESPONSIVO) -->
+  <!-- SECCIÓN DE TRANSMISIÓN EN VIVO (YOUTUBE) -->
   <section id="transmision" class="live-video-section">
     <div class="section-header">
       <h2>Transmisión en Vivo</h2>
@@ -751,8 +798,9 @@
           </div>
         </div>
 
+        <!-- TARJETA ACTUALIZADA CON FOTO DIRECTA DE GASTRONOMÍA MEXICANA -->
         <div class="interactive-card" onclick="abrirDetalle('cultura')">
-          <img class="card-thumb" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" alt="Tradiciones">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Gastronomía y Tradición Mexicana">
           <div class="card-body">
             <h3>Patrimonio y Gastronomía</h3>
             <p>La tradición del Día de Muertos y la gastronomía mexicana, catalogadas como Patrimonio Inmaterial de la Humanidad.</p>
@@ -879,8 +927,9 @@
       cultura: {
         categoria: "Turismo y Cultura",
         titulo: "Patrimonio Inmaterial, Gastronomía y Tradiciones",
-        texto: `1. Día de Muertos: Festejo tradicional de homenaje y recuerdo a los difuntos reconocido por la UNESCO.\n2. Gastronomía Tradicional: Patrimonio Cultural Inmaterial fundamentado en el maíz, frijol y chile.\n3. Pueblos Mágicos: Poblados que conservan vivas sus costumbres coloniales, leyendas y artesanías originarias.`,
+        texto: `1. Gastronomía Tradicional: Inscrita en la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO. Se distingue por su base ancestral en el maíz, frijol, chiles y hierbas autóctonas, con preparaciones emblemáticas como tacos tradicionales, moles complejos, tamales y pozole.\n\n2. Día de Muertos: Celebración ritual milenaria donde la memoria vence al olvido a través de altares con cempasúchil, pan de muerto, calaveritas de azúcar y recuerdos familiares.\n\n3. Pueblos Mágicos: Localidades que conservan vivas sus tradiciones arquitectónicas virreinales y artesanías típicas intactas.`,
         fotos: [
+          "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80"
         ]
       }
@@ -926,7 +975,7 @@
     });
 
     // -------------------------------------------------------------
-    // CONEXIÓN CON GOOGLE DRIVE EN VIVO
+    // CONEXIÓN CON GOOGLE DRIVE EN VIVO + CONTROLES MANUALES
     // -------------------------------------------------------------
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyn1icOBbOHxysGDcwjls0ge7vIzxWdhtsrdrRIkROjCjTWBpDKoMdtToRCVCSj6TmWw/exec";
 
@@ -973,19 +1022,32 @@
       });
 
       indiceLive = 0;
-      if (timerSlider) clearInterval(timerSlider);
-      if (fotosLive.length > 1) {
-        timerSlider = setInterval(rotarFotoLive, 5000);
-      }
+      reiniciarTimerAutomatico();
     }
 
-    function rotarFotoLive() {
+    function mostrarSlide(indice) {
       const slides = document.querySelectorAll('.slider-container .slide');
       if (slides.length <= 1) return;
 
       slides[indiceLive].classList.remove('active');
-      indiceLive = (indiceLive + 1) % slides.length;
+      indiceLive = (indice + slides.length) % slides.length;
       slides[indiceLive].classList.add('active');
+    }
+
+    function rotarFotoLive() {
+      mostrarSlide(indiceLive + 1);
+    }
+
+    function cambiarFotoManual(direccion) {
+      mostrarSlide(indiceLive + direccion);
+      reiniciarTimerAutomatico(); // Reinicia el contador para que no cambie repentinamente
+    }
+
+    function reiniciarTimerAutomatico() {
+      if (timerSlider) clearInterval(timerSlider);
+      if (fotosLive.length > 1) {
+        timerSlider = setInterval(rotarFotoLive, 5000); // 5 segundos
+      }
     }
 
     actualizarFotosDrive();
