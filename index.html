@@ -34,11 +34,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1.5rem;
     }
 
     nav h1 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
     }
 
@@ -60,107 +60,128 @@
       color: #f1c40f;
     }
 
-    /* Panel Institucional / Integrantes */
-    .team-panel {
+    /* Barra superior de Datos Institucionales */
+    .top-bar-info {
+      background: #ffffff;
+      border-bottom: 2px solid #e0e0e0;
+      padding: 0.8rem 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .top-bar-content {
       max-width: 1100px;
-      margin: 1.5rem auto;
-      padding: 0 1rem;
-    }
-
-    .team-card {
-      background: white;
-      border-radius: 14px;
-      padding: 1.8rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border-top: 5px solid #006847;
-    }
-
-    .team-header {
+      margin: auto;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 1rem;
-      margin-bottom: 1.2rem;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .team-title h2 {
+    .group-tag h2 {
       color: #006847;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 1.4rem;
+      display: inline-block;
+      margin-right: 8px;
     }
 
-    .team-title span {
-      font-size: 1rem;
-      font-weight: 600;
+    .group-tag span {
       color: #ce1126;
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
-    .advisors {
+    .advisors-pill {
       background: #f0f7f3;
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px;
       border-left: 4px solid #006847;
-    }
-
-    .advisors strong {
-      display: block;
-      color: #006847;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      margin-bottom: 0.2rem;
-    }
-
-    .advisors p {
-      color: #333;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .careers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .career-block {
-      background: #fafafa;
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid #eaeaea;
-    }
-
-    .career-block h4 {
-      color: #ce1126;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3rem;
-    }
-
-    .career-block ul {
-      list-style: none;
+      padding: 0.35rem 0.8rem;
+      border-radius: 4px;
       font-size: 0.88rem;
-      color: #444;
+      color: #333;
     }
 
-    .career-block li {
-      padding: 0.15rem 0;
+    .advisors-pill strong {
+      color: #006847;
+    }
+
+    /* CINTA ROTATIVA EN UN SOLO RENGLÓN (MARQUEE) */
+    .marquee-wrapper {
+      background: #1f2421;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 0;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .marquee-wrapper:hover .marquee-track {
+      animation-play-state: paused; /* Pausa al pasar el cursor */
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: scrollMarquee 75s linear infinite;
+    }
+
+    @keyframes scrollMarquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .career-group {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 2.2rem;
+    }
+
+    .career-label {
+      background: #ce1126;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-right: 0.7rem;
+      letter-spacing: 0.5px;
+    }
+
+    .member-name {
+      font-size: 0.95rem;
+      color: #f1f1f1;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .member-name::after {
+      content: "•";
+      color: #f1c40f;
+      margin: 0 0.6rem;
+    }
+
+    .member-name:last-child::after {
+      content: "";
+      margin: 0;
     }
 
     /* Carrusel de fotos en vivo */
     .hero-section {
       max-width: 1100px;
-      margin: 2rem auto;
+      margin: 1.8rem auto;
       padding: 0 1rem;
     }
 
     .slider-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #006847;
       text-transform: uppercase;
       font-weight: 700;
@@ -451,7 +472,6 @@
     <nav>
       <h1>Jornada ISFD Cecilia Braslavsky — Grupo 10</h1>
       <ul>
-        <li><a href="#inicio">Participantes</a></li>
         <li><a href="#fotos">En Vivo</a></li>
         <li><a href="#historia">Historia</a></li>
         <li><a href="#geografia">Geografía</a></li>
@@ -461,103 +481,87 @@
     </nav>
   </header>
 
-  <!-- PANEL DE INTEGRANTES -->
-  <section id="inicio" class="team-panel">
-    <div class="team-card">
-      <div class="team-header">
-        <div class="team-title">
-          <h2>Grupo 10: México</h2>
-          <span>Aula 10 — 37 Participantes</span>
-        </div>
-        <div class="advisors">
-          <strong>Profesores Asesores</strong>
-          <p>Prof. Kener Rosa Isabel</p>
-          <p>Prof. Wesner Lucas</p>
-        </div>
+  <!-- ENCABEZADO CON AULA Y ASESORES -->
+  <div class="top-bar-info">
+    <div class="top-bar-content">
+      <div class="group-tag">
+        <h2>GRUPO 10: MÉXICO</h2>
+        <span>Aula 10 — 37 Participantes</span>
       </div>
-
-      <div class="careers-grid">
-        <div class="career-block">
-          <h4>Lengua y Literatura</h4>
-          <ul>
-            <li>Soler, Jennifer</li>
-            <li>Guimaraes, Daniela</li>
-            <li>Gallardo, Daniela</li>
-            <li>Nolasco, Griselda</li>
-          </ul>
-        </div>
-
-        <div class="career-block">
-          <h4>Historia</h4>
-          <ul>
-            <li>Antunez, Fabricio</li>
-            <li>Statkiewicz, Nicolás</li>
-            <li>Tarón, Mateo</li>
-            <li>Hajndel, Rocío</li>
-            <li>López, Darío</li>
-          </ul>
-        </div>
-
-        <div class="career-block">
-          <h4>Prof. en Educación Especial</h4>
-          <ul>
-            <li>Acuña, Morena Belén</li>
-            <li>Viera, Joana Maribel</li>
-            <li>Giménez, Milena Gabriana</li>
-          </ul>
-        </div>
-
-        <div class="career-block">
-          <h4>Biología</h4>
-          <ul>
-            <li>Irma Milagros Aylén</li>
-            <li>Schmeller Brisa Micael</li>
-            <li>Soto Adrián Rafael</li>
-          </ul>
-        </div>
-
-        <div class="career-block">
-          <h4>Matemáticas</h4>
-          <ul>
-            <li>Ruiz Diaz Sundhoff Nicolas</li>
-            <li>Runge Esteisi</li>
-            <li>Sapiaginski Maria</li>
-            <li>Sauer Lorena</li>
-            <li>Baez, Dario Nahuel</li>
-          </ul>
-        </div>
-
-        <div class="career-block" style="grid-column: 1 / -1;">
-          <h4>Educación Física</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem;">
-            <ul>
-              <li>Rudakoff Schauer Oziel</li>
-              <li>Silva Axel Fernando</li>
-              <li>Poleszczuk Ayala Mauricio</li>
-              <li>Castillo Cintia Judith</li>
-              <li>Sosa Cristian</li>
-              <li>Castro Silvina Nair</li>
-            </ul>
-            <ul>
-              <li>Tommasi Valentina</li>
-              <li>Faleiro De Bastos Axel</li>
-              <li>Schmidt Marcos Mauricio</li>
-              <li>Goncalvez Matías Gabriel</li>
-              <li>Da Rosa Siomara Katrin</li>
-              <li>Piriz Cintia Itatí</li>
-            </ul>
-            <ul>
-              <li>Suarez Lopez Agustin Maximiliano</li>
-              <li>De Souza Bueno Gonzalez Kevin Gonzalo</li>
-              <li>Handorf Serena Magali</li>
-              <li>De Almeida Angel Nicolas</li>
-              <li>Diaz Maria Fernanda</li>
-            </ul>
-          </div>
-        </div>
+      <div class="advisors-pill">
+        <strong>Profesores Asesores:</strong> Prof. Kener Rosa Isabel &nbsp;|&nbsp; Prof. Wesner Lucas
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- CINTA ROTATIVA EN UN SOLO RENGLÓN CONTINUO (MARQUEE) -->
+  <div class="marquee-wrapper" title="Pasá el cursor o tocá para pausar">
+    <div class="marquee-track" id="marqueeTrack">
+      
+      <!-- BLOQUE DE PARTICIPANTES -->
+      <div class="career-group">
+        <span class="career-label">Lengua y Literatura</span>
+        <span class="member-name">Jennifer Soler</span>
+        <span class="member-name">Daniela Guimaraes</span>
+        <span class="member-name">Daniela Gallardo</span>
+        <span class="member-name">Griselda Nolasco</span>
+      </div>
+
+      <div class="career-group">
+        <span class="career-label">Historia</span>
+        <span class="member-name">Fabricio Antunez</span>
+        <span class="member-name">Nicolás Statkiewicz</span>
+        <span class="member-name">Mateo Tarón</span>
+        <span class="member-name">Rocío Hajndel</span>
+        <span class="member-name">Darío López</span>
+      </div>
+
+      <div class="career-group">
+        <span class="career-label">Educación Especial</span>
+        <span class="member-name">Morena Belén Acuña</span>
+        <span class="member-name">Joana Maribel Viera</span>
+        <span class="member-name">Milena Gabriana Giménez</span>
+      </div>
+
+      <div class="career-group">
+        <span class="career-label">Biología</span>
+        <span class="member-name">Irma Milagros Aylén</span>
+        <span class="member-name">Brisa Micael Schmeller</span>
+        <span class="member-name">Adrián Rafael Soto</span>
+      </div>
+
+      <div class="career-group">
+        <span class="career-label">Matemáticas</span>
+        <span class="member-name">Nicolas Ruiz Diaz Sundhoff</span>
+        <span class="member-name">Esteisi Runge</span>
+        <span class="member-name">Maria Sapiaginski</span>
+        <span class="member-name">Lorena Sauer</span>
+        <span class="member-name">Dario Nahuel Baez</span>
+      </div>
+
+      <div class="career-group">
+        <span class="career-label">Educación Física</span>
+        <span class="member-name">Oziel Rudakoff Schauer</span>
+        <span class="member-name">Axel Fernando Silva</span>
+        <span class="member-name">Mauricio Poleszczuk Ayala</span>
+        <span class="member-name">Cintia Judith Castillo</span>
+        <span class="member-name">Cristian Sosa</span>
+        <span class="member-name">Silvina Nair Castro</span>
+        <span class="member-name">Valentina Tommasi</span>
+        <span class="member-name">Axel Faleiro De Bastos</span>
+        <span class="member-name">Marcos Mauricio Schmidt</span>
+        <span class="member-name">Matías Gabriel Goncalvez</span>
+        <span class="member-name">Siomara Katrin Da Rosa</span>
+        <span class="member-name">Cintia Itatí Piriz</span>
+        <span class="member-name">Agustin Maximiliano Suarez Lopez</span>
+        <span class="member-name">Kevin Gonzalo De Souza Bueno Gonzalez</span>
+        <span class="member-name">Serena Magali Handorf</span>
+        <span class="member-name">Angel Nicolas De Almeida</span>
+        <span class="member-name">Maria Fernanda Diaz</span>
+      </div>
+
+    </div>
+  </div>
 
   <!-- CARRUSEL DE FOTOS EN VIVO -->
   <div id="fotos" class="hero-section">
@@ -603,7 +607,7 @@
           <img class="card-thumb" src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80" alt="Revolución Mexicana">
           <div class="card-body">
             <h3>Revolución y México Moderno</h3>
-            <p>El levantamiento armado de 1910 con Zapata y Villa, y la histórica Constitución Social de 1917.</p>
+            <p>El levantamiento popular de 1910 con Zapata y Villa, y la histórica Constitución Social de 1917.</p>
             <div class="card-action">Ver contenido completo →</div>
           </div>
         </div>
@@ -736,15 +740,16 @@
   </footer>
 
   <script>
+    // Duplicación automática del track de la marquesina para loop infinito suave
+    const track = document.getElementById('marqueeTrack');
+    track.innerHTML += track.innerHTML;
+
+    // BASE DE DATOS DE CONTENIDOS EXTENDIDOS
     const DATA_SECCIONES = {
       prehispanica: {
         categoria: "Historia",
         titulo: "El Esplendor Prehispánico Mesoamericano",
-        texto: `Antes de la llegada europea, el actual territorio mexicano vio florecer civilizaciones de enorme complejidad urbana, social y científica.
-
-Los Olmecas, considerados la cultura madre en las costas del Golfo, establecieron los primeros centros ceremoniales, el juego de pelota y un calendario ritual. Posteriormente, los Mayas en el sureste y Centroamérica alcanzaron cumbres en el cálculo del ciclo solar y venusino, el empleo del cero posicional en su matemática y un sistema de escritura jeroglífica altamente refinado.
-
-Hacia el período Posclásico, los Mexicas o Aztecas fundaron Tenochtitlan en 1325 en el lago de Texcoco. Con su técnica agrícola de chinampas e imponentes templos ceremoniales, consolidaron un poderío hegemónico sobre gran parte de Mesoamérica hasta 1521.`,
+        texto: `Antes de la llegada europea, el territorio mexicano fue el hogar de civilizaciones de notable complejidad urbana, social y científica.\n\nLos Olmecas establecieron los primeros centros ceremoniales, el juego de pelota y un calendario ritual. Posteriormente, los Mayas en la península de Yucatán y Centroamérica alcanzaron cumbres en el cálculo astronómico, el empleo del cero posicional en su matemática y un sistema de escritura jeroglífica muy avanzado.\n\nHacia el período Posclásico, los Mexicas o Aztecas fundaron Tenochtitlan en 1325 en el lago de Texcoco. Con su técnica agrícola de chinampas e imponentes templos ceremoniales, consolidaron un poderío hegemónico sobre gran parte de Mesoamérica hasta 1521.`,
         fotos: [
           "https://images.unsplash.com/photo-1512813389649-acb9131ced20?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80"
@@ -753,9 +758,7 @@ Hacia el período Posclásico, los Mexicas o Aztecas fundaron Tenochtitlan en 13
       virreinato: {
         categoria: "Historia",
         titulo: "Virreinato de Nueva España e Independencia",
-        texto: `La caída de México-Tenochtitlan en 1521 inauguró tres siglos de dominación virreinal. Durante este período se configuró una sociedad mestiza, con fuerte arraigo católico y un destacable legado arquitectónico novohispano.
-
-En 1810, el cura Miguel Hidalgo inició el movimiento de Independencia con el histórico Grito de Dolores. Tras más de una década de confrontación encabezada sucesivamente por líderes como José María Morelos y Vicente Guerrero, en 1821 se consumó la emancipación política definitiva.`,
+        texto: `La caída de Tenochtitlan en 1521 inauguró tres siglos de dominación virreinal. Durante este período se configuró una sociedad mestiza, con fuerte arraigo católico y un destacable patrimonio arquitectónico novohispano.\n\nEn 1810, el cura Miguel Hidalgo inició el movimiento de Independencia con el histórico Grito de Dolores. Tras más de una década de confrontación encabezada por figuras como Morelos y Guerrero, en 1821 se consumó la independencia del país.`,
         fotos: [
           "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1543872084-c7bd3822856f?auto=format&fit=crop&w=600&q=80"
@@ -764,9 +767,7 @@ En 1810, el cura Miguel Hidalgo inició el movimiento de Independencia con el hi
       revolucion: {
         categoria: "Historia",
         titulo: "La Revolución Mexicana de 1910 y el Siglo XX",
-        texto: `En 1910 dio inicio la Revolución Mexicana, un masivo levantamiento popular contra el régimen de Porfirio Díaz impulsado por reclamos de democracia electoral y restitución de tierras comunales.
-
-Figuras históricas como Emiliano Zapata en el sur y Pancho Villa en el norte marcaron la lucha agraria y social. El desenlace institucional fue la Constitución Política de 1917, precursora a nivel mundial en el reconocimiento de los derechos laborales, la propiedad de la tierra y la educación laica.`,
+        texto: `En 1910 dio inicio la Revolución Mexicana, un masivo levantamiento popular contra el régimen de Porfirio Díaz impulsado por reclamos de democracia electoral y restitución de tierras comunales.\n\nLíderes como Emiliano Zapata en el sur y Pancho Villa en el norte marcaron la gesta social y agraria. El desenlace institucional fue la Constitución Política de 1917, precursora a nivel mundial en el reconocimiento de derechos laborales colectivos y educación laica.`,
         fotos: [
           "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80"
@@ -775,9 +776,7 @@ Figuras históricas como Emiliano Zapata en el sur y Pancho Villa en el norte ma
       relieve: {
         categoria: "Geografía",
         titulo: "Relieve Imponente: Sierras, Volcanes y Mesetas",
-        texto: `México cuenta con una orografía abrupta y variada, modelada por la Sierra Madre Occidental y la Sierra Madre Oriental, las cuales flanquean el Altiplano Central.
-
-A través del centro del territorio se extiende el Eje Neovolcánico Transversal, donde se ubican algunas de las montañas más altas del país: el Pico de Orizaba (5.636 msnm), el Popocatépetl y el Iztaccíhuatl.`,
+        texto: `México cuenta con una orografía abrupta modelada por la Sierra Madre Occidental y la Sierra Madre Oriental, las cuales flanquean el Altiplano Central.\n\nA través del centro del territorio se extiende el Eje Neovolcánico Transversal, donde se ubican algunas de las cumbres más altas del país: el Pico de Orizaba (5.636 msnm), el Popocatépetl y el Iztaccíhuatl.`,
         fotos: [
           "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
@@ -786,7 +785,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       ecosistemas: {
         categoria: "Geografía",
         titulo: "País Megadiverso: Selvas, Desiertos y Costas",
-        texto: `Considerado uno de los 17 países megadiversos del mundo, México alberga entre el 10% y el 12% de las especies del planeta. Sus biomas van desde las zonas áridas y cactáceas del norte hasta las selvas tropicales perennifolias en el sur, sumado a ecosistemas marinos en el Golfo de California y el Mar Caribe.`,
+        texto: `Considerado uno de los 17 países megadiversos del mundo, México alberga entre el 10% y el 12% de las especies del planeta. Sus biomas van desde las zonas áridas y cactáceas del norte hasta las selvas tropicales húmedas en el sur, sumado a ecosistemas marinos notables en el Golfo de California y el Mar Caribe.`,
         fotos: [
           "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
@@ -795,7 +794,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       cdmx: {
         categoria: "Ciudades",
         titulo: "Ciudad de México: Corazón Político y Cultural",
-        texto: `Emplazada a más de 2.200 metros sobre el nivel del mar, la Ciudad de México es uno de los centros urbanos más poblados del planeta. Su Centro Histórico preserva el Templo Mayor prehispánico junto a edificaciones coloniales barrocas y grandes museos de categoría mundial.`,
+        texto: `Emplazada a más de 2.200 metros sobre el nivel del mar, la Ciudad de México es uno de los centros urbanos más poblados del planeta. Su Centro Histórico preserva el Templo Mayor prehispánico junto a palacios coloniales barrocos y reconocidos museos como el Museo Nacional de Antropología.`,
         fotos: [
           "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80"
@@ -804,7 +803,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       guadalajara: {
         categoria: "Ciudades",
         titulo: "Guadalajara: Tradición Tapatía y Polo Tecnológico",
-        texto: `Capital del estado de Jalisco, es reconocida como la tierra del mariachi y la charrería. Paralelamente, en la actualidad se consolida como uno de los nodos tecnológicos e informáticos más dinámicos de América Latina.`,
+        texto: `Capital de Jalisco, es reconocida internacionalmente como la tierra del mariachi y la charrería. Paralelamente, se consolida como uno de los nodos tecnológicos y de software más dinámicos de América Latina.`,
         fotos: [
           "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=600&q=80"
         ]
@@ -812,7 +811,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       monterrey: {
         categoria: "Ciudades",
         titulo: "Monterrey: Motor Productivo del Norte",
-        texto: `Ubicada al pie del imponente Cerro de la Silla en Nuevo León, Monterrey es el principal centro industrial del norte mexicano, célebre por su espíritu emprendedor, universidades de renombre y su Parque Fundidora.`,
+        texto: `Ubicada al pie del emblemático Cerro de la Silla en Nuevo León, Monterrey es el principal centro industrial y empresarial del norte mexicano, destacando por su empuje universitario y su Parque Fundidora.`,
         fotos: [
           "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"
         ]
@@ -820,7 +819,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       chichen: {
         categoria: "Turismo",
         titulo: "Zonas Arqueológicas y Pirámides Sagradas",
-        texto: `México cuenta con destacados sitios arqueológicos declarados Patrimonio de la Humanidad, como Chichén Itzá en Yucatán (famoso por el templo de Kukulkán) y las colosales Pirámides del Sol y de la Luna en Teotihuacán.`,
+        texto: `México cuenta con sitios arqueológicos declarados Patrimonio de la Humanidad, como Chichén Itzá en Yucatán (con el célebre templo de Kukulkán) y las monumentales Pirámides del Sol y de la Luna en Teotihuacán.`,
         fotos: [
           "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80",
           "https://images.unsplash.com/photo-1512813389649-acb9131ced20?auto=format&fit=crop&w=600&q=80"
@@ -829,7 +828,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       caribe: {
         categoria: "Turismo",
         titulo: "Caribe Mexicano, Cenotes y la Riviera Maya",
-        texto: `La península de Yucatán y el litoral de Quintana Roo albergan playas de arena blanca coralina y aguas turquesas, junto con el fascinante sistema subterráneo de cenotes que constituían espacios ceremoniales mayas.`,
+        texto: `La península de Yucatán y las costas de Quintana Roo albergan playas de arena blanca y aguas turquesas, junto con el fascinante sistema natural de cenotes subterráneos que conformaban espacios sagrados para los mayas.`,
         fotos: [
           "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
         ]
@@ -837,10 +836,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
       cultura: {
         categoria: "Turismo y Cultura",
         titulo: "Patrimonio Inmaterial, Gastronomía y Tradiciones",
-        texto: `Las expresiones culturales mexicanas destacan a nivel global:
-1. **Día de Muertos:** Ritual sincrético con ofrendas, altares y flor de cempasúchil para rememorar a los seres queridos.
-2. **Gastronomía Tradicional:** Declarada Patrimonio Cultural Inmaterial de la Humanidad, cimentada sobre el maíz, frijol y chile.
-3. **Pueblos Mágicos:** Red de localidades que preservan costumbres, danzas y artesanías típicas intactas.`,
+        texto: `1. Día de Muertos: Festejo tradicional de homenaje y recuerdo a los difuntos reconocido por la UNESCO.\n2. Gastronomía Tradicional: Patrimonio Cultural Inmaterial fundamentado en el maíz, frijol y chile.\n3. Pueblos Mágicos: Poblados que conservan vivas sus costumbres coloniales, leyendas y artesanías originarias.`,
         fotos: [
           "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80"
         ]
@@ -887,7 +883,7 @@ A través del centro del territorio se extiende el Eje Neovolcánico Transversal
     });
 
     // -------------------------------------------------------------
-    // CONEXIÓN CON APPS SCRIPT (DRIVE)
+    // CONEXIÓN CON GOOGLE DRIVE EN VIVO
     // -------------------------------------------------------------
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyn1icOBbOHxysGDcwjls0ge7vIzxWdhtsrdrRIkROjCjTWBpDKoMdtToRCVCSj6TmWw/exec";
 
