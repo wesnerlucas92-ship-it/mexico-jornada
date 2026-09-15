@@ -60,7 +60,7 @@
       color: #f1c40f;
     }
 
-    /* Barra superior de Datos Institucionales */
+    /* Encabezado: Aula y Profesores */
     .top-bar-info {
       background: #ffffff;
       border-bottom: 2px solid #e0e0e0;
@@ -104,7 +104,7 @@
       color: #006847;
     }
 
-    /* CINTA ROTATIVA EN UN SOLO RENGLÓN CONTINUO */
+    /* Cinta rotativa en un solo renglón */
     .marquee-wrapper {
       background: #1f2421;
       color: #fff;
@@ -173,7 +173,7 @@
       margin: 0;
     }
 
-    /* Carrusel de fotos en vivo */
+    /* Carrusel de fotos en vivo (Drive) */
     .hero-section {
       max-width: 1100px;
       margin: 1.8rem auto;
@@ -254,23 +254,34 @@
       font-size: 1rem;
     }
 
-    <!-- SECCIÓN DE TRANSMISIÓN EN VIVO (YOUTUBE AUTOPLAY) -->
-  <section id="transmision" class="live-video-section">
-    <div class="section-header">
-      <h2>Transmisión en Vivo</h2>
-      <span>Acto institucional y presentaciones de la jornada</span>
-    </div>
-    <div class="video-responsive">
-      <iframe 
-        src="https://www.youtube.com/embed/live_stream?channel=UCHNWcI2MuxGkb3JGb9P_Xmg&autoplay=1&mute=1&playsinline=1" 
-        title="Transmisión en vivo ISFD Cecilia Braslavsky"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
+    /* Sección de YouTube responsiva completa */
+    .live-video-section {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
 
-    /* Contenido temático */
+    .video-responsive {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* Relación 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: #000;
+    }
+
+    .video-responsive iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Contenido temático y secciones */
     main.content {
       max-width: 1100px;
       margin: 2.5rem auto;
@@ -498,12 +509,12 @@
     </nav>
   </header>
 
-  <!-- ENCABEZADO CON AULA Y ASESORES -->
+  <!-- ENCABEZADO CON AULA Y PROFESORES -->
   <div class="top-bar-info">
     <div class="top-bar-content">
       <div class="group-tag">
         <h2>GRUPO 10: MÉXICO</h2>
-        <span>Aula 10 </span>
+        <span>Aula 10</span>
       </div>
       <div class="advisors-pill">
         <strong>Profesores:</strong> Prof. Kener Rosa Isabel &nbsp;|&nbsp; Prof. Wesner Lucas
@@ -511,7 +522,7 @@
     </div>
   </div>
 
-  <!-- CINTA ROTATIVA EN UN SOLO RENGLÓN CONTINUO (MARQUEE) -->
+  <!-- CINTA ROTATIVA EN UN SOLO RENGLÓN CONTINUO -->
   <div class="marquee-wrapper" title="Pasá el cursor o tocá para pausar">
     <div class="marquee-track" id="marqueeTrack">
       
@@ -591,7 +602,7 @@
     </div>
   </div>
 
-  <!-- SECCIÓN DE TRANSMISIÓN EN VIVO (YOUTUBE) -->
+  <!-- SECCIÓN DE TRANSMISIÓN EN VIVO (YOUTUBE AUTOPLAY RESPONSIVO) -->
   <section id="transmision" class="live-video-section">
     <div class="section-header">
       <h2>Transmisión en Vivo</h2>
@@ -599,7 +610,7 @@
     </div>
     <div class="video-responsive">
       <iframe 
-        src="https://www.youtube.com/embed/live_stream?channel=UCHNWcI2MuxGkb3JGb9P_Xmg" 
+        src="https://www.youtube.com/embed/live_stream?channel=UCHNWcI2MuxGkb3JGb9P_Xmg&autoplay=1&mute=1&playsinline=1" 
         title="Transmisión en vivo ISFD Cecilia Braslavsky"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         allowfullscreen>
