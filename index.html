@@ -104,7 +104,7 @@
       color: #006847;
     }
 
-    /* CINTA ROTATIVA EN UN SOLO RENGLÓN (MARQUEE) */
+    /* CINTA ROTATIVA EN UN SOLO RENGLÓN CONTINUO */
     .marquee-wrapper {
       background: #1f2421;
       color: #fff;
@@ -118,7 +118,7 @@
     }
 
     .marquee-wrapper:hover .marquee-track {
-      animation-play-state: paused; /* Pausa al pasar el cursor */
+      animation-play-state: paused;
     }
 
     .marquee-track {
@@ -252,6 +252,32 @@
       text-align: center;
       padding: 190px 1rem 0;
       font-size: 1rem;
+    }
+
+    /* SECCIÓN DE TRANSMISIÓN DE YOUTUBE */
+    .live-video-section {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .video-responsive {
+      position: relative;
+      padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: #000;
+    }
+
+    .video-responsive iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* Contenido temático */
@@ -472,7 +498,8 @@
     <nav>
       <h1>Jornada ISFD Cecilia Braslavsky — Grupo 10</h1>
       <ul>
-        <li><a href="#fotos">En Vivo</a></li>
+        <li><a href="#fotos">Fotos Drive</a></li>
+        <li><a href="#transmision">En Vivo</a></li>
         <li><a href="#historia">Historia</a></li>
         <li><a href="#geografia">Geografía</a></li>
         <li><a href="#ciudades">Ciudades</a></li>
@@ -486,10 +513,10 @@
     <div class="top-bar-content">
       <div class="group-tag">
         <h2>GRUPO 10: MÉXICO</h2>
-        <span>Aula 10 </span>
+        <span>Aula 10 — 37 Participantes</span>
       </div>
       <div class="advisors-pill">
-        <strong>Profesores:</strong> Prof. Kener Rosa Isabel &nbsp;|&nbsp; Prof. Wesner Lucas
+        <strong>Profesores Asesores:</strong> Prof. Kener Rosa Isabel &nbsp;|&nbsp; Prof. Wesner Lucas
       </div>
     </div>
   </div>
@@ -498,7 +525,6 @@
   <div class="marquee-wrapper" title="Pasá el cursor o tocá para pausar">
     <div class="marquee-track" id="marqueeTrack">
       
-      <!-- BLOQUE DE PARTICIPANTES -->
       <div class="career-group">
         <span class="career-label">Lengua y Literatura</span>
         <span class="member-name">Jennifer Soler</span>
@@ -563,7 +589,7 @@
     </div>
   </div>
 
-  <!-- CARRUSEL DE FOTOS EN VIVO -->
+  <!-- CARRUSEL DE FOTOS EN VIVO (GOOGLE DRIVE) -->
   <div id="fotos" class="hero-section">
     <div class="slider-title">
       <span class="live-dot"></span> Galería en Vivo desde Google Drive
@@ -574,6 +600,22 @@
       </div>
     </div>
   </div>
+
+  <!-- SECCIÓN DE TRANSMISIÓN EN VIVO (YOUTUBE) -->
+  <section id="transmision" class="live-video-section">
+    <div class="section-header">
+      <h2>Transmisión en Vivo</h2>
+      <span>Acto institucional y presentaciones de la jornada</span>
+    </div>
+    <div class="video-responsive">
+      <iframe 
+        src="https://www.youtube.com/embed/live_stream?channel=UCHNWcI2MuxGkb3JGb9P_Xmg" 
+        title="Transmisión en vivo ISFD Cecilia Braslavsky"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
 
   <main class="content">
 
@@ -740,11 +782,11 @@
   </footer>
 
   <script>
-    // Duplicación automática del track de la marquesina para loop infinito suave
+    // Loop infinito suave de nombres
     const track = document.getElementById('marqueeTrack');
     track.innerHTML += track.innerHTML;
 
-    // BASE DE DATOS DE CONTENIDOS EXTENDIDOS
+    // Base de datos de contenidos extendidos
     const DATA_SECCIONES = {
       prehispanica: {
         categoria: "Historia",
