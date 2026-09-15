@@ -11,25 +11,21 @@
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
-    html {
-      scroll-behavior: smooth;
-    }
 
     body {
-      background-color: #f8f9fa;
+      background-color: #f6f7f9;
       color: #2b2b2b;
       line-height: 1.6;
     }
 
     /* Navegación */
     header {
-      background-color: #006847; /* Verde bandera */
+      background-color: #006847;
       color: white;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
     nav {
@@ -39,14 +35,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1.5rem;
-      flex-wrap: wrap;
-      gap: 10px;
     }
 
     nav h1 {
       font-size: 1.15rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
     nav ul {
@@ -64,23 +57,50 @@
     }
 
     nav a:hover {
-      color: #e5a93c;
+      color: #f1c40f;
     }
 
-    /* Hero / Carrusel */
+    /* Carrusel superior en vivo */
     .hero-section {
-      max-width: 1000px;
-      margin: 2rem auto;
+      max-width: 1100px;
+      margin: 1.5rem auto;
       padding: 0 1rem;
+    }
+
+    .slider-title {
+      font-size: 1rem;
+      color: #006847;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #ce1126;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     .slider-container {
       width: 100%;
-      height: 480px;
+      height: 420px;
       position: relative;
       overflow: hidden;
-      border-radius: 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
       background-color: #1a1a1a;
     }
 
@@ -90,9 +110,6 @@
       height: 100%;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .slide.active {
@@ -110,69 +127,215 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
       color: #fff;
       padding: 1.5rem 1rem 1rem 1rem;
       text-align: center;
       font-size: 1.05rem;
-      font-weight: 500;
     }
 
     .status-msg {
-      color: #eee;
+      color: #ddd;
       text-align: center;
-      padding: 2rem;
-      font-size: 1.1rem;
+      padding: 180px 1rem 0;
+      font-size: 1rem;
     }
 
-    /* Contenido general */
-    section {
-      max-width: 1000px;
-      margin: 3.5rem auto;
-      padding: 0 1.5rem;
+    /* Categorías principales */
+    main.content {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
 
-    h2 {
+    .section-block {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header {
+      border-bottom: 3px solid #ce1126;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
       color: #006847;
-      border-bottom: 3px solid #ce1126; /* Rojo bandera */
-      display: inline-block;
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.3rem;
       font-size: 1.6rem;
     }
 
-    p {
-      text-align: justify;
-      color: #444;
-      font-size: 1.02rem;
+    .section-header span {
+      font-size: 0.85rem;
+      color: #777;
     }
 
-    /* Grillas informativas */
-    .grid {
+    /* Cuadrículas de tarjetas desplegables */
+    .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      margin-top: 1.5rem;
     }
 
-    .card {
-      background: #ffffff;
-      border-radius: 10px;
-      border-left: 5px solid #006847;
-      padding: 1.4rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .interactive-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid #eaeaea;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    .interactive-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+      border-color: #006847;
     }
 
-    .card h3 {
+    .card-thumb {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-body h3 {
       color: #ce1126;
-      margin-bottom: 0.6rem;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: #006847;
+      font-size: 0.9rem;
+    }
+
+    /* Modal / Vista de Detalle Pantalla Completa */
+    .detail-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .detail-overlay.active {
+      display: flex;
+    }
+
+    .detail-modal {
+      background: white;
+      width: 100%;
+      max-width: 850px;
+      max-height: 90vh;
+      border-radius: 14px;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .close-btn {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: #eee;
+      border: none;
+      font-size: 1.4rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .close-btn:hover {
+      background: #ce1126;
+      color: white;
+    }
+
+    .modal-tag {
+      color: #006847;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .modal-title {
+      color: #ce1126;
+      font-size: 1.8rem;
+      margin: 0.3rem 0 1rem;
+    }
+
+    .modal-text {
+      font-size: 1.05rem;
+      color: #333;
+      text-align: justify;
+      margin-bottom: 1.5rem;
+      white-space: pre-line;
+      line-height: 1.7;
+    }
+
+    .modal-gallery-title {
+      font-size: 1.1rem;
+      color: #006847;
+      margin-bottom: 0.8rem;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3rem;
+    }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     footer {
@@ -185,13 +348,9 @@
     }
 
     @media (max-width: 768px) {
-      .slider-container {
-        height: 320px;
-      }
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .slider-container { height: 280px; }
+      nav { flex-direction: column; gap: 0.8rem; }
+      .detail-modal { padding: 1.2rem; }
     }
   </style>
 </head>
@@ -199,7 +358,7 @@
 
   <header>
     <nav>
-      <h1>Jornada ISFD Cecilia Braslavsky — México</h1>
+      <h1>Jornada Institucional — ISFD Cecilia Braslavsky</h1>
       <ul>
         <li><a href="#inicio">Fotos en Vivo</a></li>
         <li><a href="#historia">Historia</a></li>
@@ -210,135 +369,432 @@
     </nav>
   </header>
 
-  <main id="inicio" class="hero-section">
+  <!-- Slider de Fotos en Vivo -->
+  <div id="inicio" class="hero-section">
+    <div class="slider-title">
+      <span class="live-dot"></span> Transmisión de fotos en vivo (Drive)
+    </div>
     <div class="slider-container" id="sliderContainer">
       <div class="slide active">
-        <div class="status-msg" id="statusMessage">Cargando fotos del evento en tiempo real...</div>
+        <div class="status-msg" id="statusMessage">Conectando con la carpeta de fotos...</div>
       </div>
     </div>
+  </div>
+
+  <main class="content">
+
+    <!-- HISTORIA -->
+    <section id="historia" class="section-block">
+      <div class="section-header">
+        <h2>Historia de México</h2>
+        <span>Hacé clic en una tarjeta para explorar</span>
+      </div>
+      <div class="card-grid">
+
+        <div class="interactive-card" onclick="abrirDetalle('prehispanica')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1512813389649-acb9131ced20?auto=format&fit=crop&w=600&q=80" alt="Época Prehispánica">
+          <div class="card-body">
+            <h3>Época Prehispánica</h3>
+            <p>Mesoamérica albergó civilizaciones avanzadas en astronomía, matemáticas y urbanismo como los Mayas y Mexicas.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('virreinato')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=600&q=80" alt="Virreinato y Conquista">
+          <div class="card-body">
+            <h3>Virreinato e Independencia</h3>
+            <p>Tres siglos bajo el dominio español de la Nueva España y el proceso emancipador encabezado por Hidalgo y Morelos.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('revolucion')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80" alt="Revolución Mexicana">
+          <div class="card-body">
+            <h3>Revolución y México Moderno</h3>
+            <p>El conflicto armado de 1910, la búsqueda de justicia agraria y laboral, y la consolidación de la Constitución de 1917.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GEOGRAFÍA -->
+    <section id="geografia" class="section-block">
+      <div class="section-header">
+        <h2>Geografía y Biodiversidad</h2>
+        <span>Hacé clic en una tarjeta para explorar</span>
+      </div>
+      <div class="card-grid">
+
+        <div class="interactive-card" onclick="abrirDetalle('relieve')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Sierras y Relieve">
+          <div class="card-body">
+            <h3>Sierras, Mesetas y Volcanes</h3>
+            <p>Un territorio accidentado atravesado por las Sierras Madre y el Eje Neovolcánico, con cumbres nevadas y altiplanos.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('ecosistemas')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80" alt="Ecosistemas">
+          <div class="card-body">
+            <h3>Ecosistemas y Megadiversidad</h3>
+            <p>Uno de los cinco países biológicamente más diversos del mundo: desiertos áridos al norte y densas selvas tropicales al sur.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CIUDADES -->
+    <section id="ciudades" class="section-block">
+      <div class="section-header">
+        <h2>Ciudades Importantes</h2>
+        <span>Hacé clic en una tarjeta para explorar</span>
+      </div>
+      <div class="card-grid">
+
+        <div class="interactive-card" onclick="abrirDetalle('cdmx')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=600&q=80" alt="Ciudad de México">
+          <div class="card-body">
+            <h3>Ciudad de México (CDMX)</h3>
+            <p>Epicentro político, financiero y cultural del país, construida sobre el lecho de la antigua Tenochtitlan.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('guadalajara')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=600&q=80" alt="Guadalajara">
+          <div class="card-body">
+            <h3>Guadalajara (Jalisco)</h3>
+            <p>Cuna del mariachi, la charrería y polo de vanguardia tecnológica e industrial en el occidente mexicano.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('monterrey')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="Monterrey">
+          <div class="card-body">
+            <h3>Monterrey (Nuevo León)</h3>
+            <p>Capital industrial y de negocios del norte del país, resguardada por el icónico Cerro de la Silla.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TURISMO -->
+    <section id="turismo" class="section-block">
+      <div class="section-header">
+        <h2>Destinos Turísticos y Culturales</h2>
+        <span>Hacé clic en una tarjeta para explorar</span>
+      </div>
+      <div class="card-grid">
+
+        <div class="interactive-card" onclick="abrirDetalle('chichen')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80" alt="Arqueología">
+          <div class="card-body">
+            <h3>Rutas Arqueológicas</h3>
+            <p>Monumentos prehispánicos universales: desde Chichén Itzá en Yucatán hasta las pirámides de Teotihuacán.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('caribe')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Playas de México">
+          <div class="card-body">
+            <h3>Caribe y Riviera Maya</h3>
+            <p>Aguas cristalinas, cenotes sagrados, arrecifes de coral y turismo internacional en Tulum y Cancún.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+        <div class="interactive-card" onclick="abrirDetalle('cultura')">
+          <img class="card-thumb" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" alt="Tradiciones">
+          <div class="card-body">
+            <h3>Patrimonio y Gastronomía</h3>
+            <p>La fiesta del Día de Muertos y la cocina mexicana, catalogadas como Patrimonio Inmaterial de la Humanidad.</p>
+            <div class="card-action">Ver contenido completo →</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
-  <section id="historia">
-    <h2>Historia</h2>
-    <p>México posee una herencia histórica milenaria. Las culturas prehispánicas como los mayas, mexicas (aztecas), zapotecas y mixtecos establecieron complejos centros urbanos y conocimientos avanzados. Tras el proceso de conquista y el período colonial del Virreinato de la Nueva España (1521–1821), el país inició su gesta libertaria, continuada durante el siglo XIX y consolidada tras la Revolución Mexicana de 1910, un hito que redefinió los derechos sociales y la identidad nacional.</p>
-  </section>
-
-  <section id="geografia">
-    <h2>Geografía</h2>
-    <p>Situado en la región meridional de América del Norte, limita al norte con Estados Unidos y hacia el sureste con Guatemala y Belice. Su geografía integra cadenas montañosas (Sierra Madre Occidental y Oriental), mesetas templadas, zonas desérticas y bosques tropicales húmedos, junto a una extensa fachada marina sobre el Océano Pacífico, el Golfo de California, el Golfo de México y el Mar Caribe.</p>
-  </section>
-
-  <section id="ciudades">
-    <h2>Ciudades Principales</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Ciudad de México (CDMX)</h3>
-        <p>Centro neurálgico, cultural y económico del país, erigido sobre el valle lacustre de México y colmado de sitios patrimoniales y museos.</p>
-      </div>
-      <div class="card">
-        <h3>Guadalajara</h3>
-        <p>Capital de Jalisco y referente de elementos identitarios tradicionales como la música de mariachi y la charrería, destacando además como núcleo tecnológico y educativo.</p>
-      </div>
-      <div class="card">
-        <h3>Monterrey</h3>
-        <p>Principal polo productivo e industrial del norte mexicano, situado al pie del característico Cerro de la Silla.</p>
+  <!-- MODAL / VISTA DE DETALLE DESPLEGABLE -->
+  <div class="detail-overlay" id="detailOverlay" onclick="cerrarDetalleFuera(event)">
+    <div class="detail-modal">
+      <button class="close-btn" onclick="cerrarDetalle()">&times;</button>
+      <div class="modal-tag" id="modalCategory">CATEGORÍA</div>
+      <h2 class="modal-title" id="modalTitle">Título de la sección</h2>
+      <div class="modal-text" id="modalBody">Texto explicativo detallado...</div>
+      
+      <div class="modal-gallery-title">Galería fotográfica referencial</div>
+      <div class="modal-gallery" id="modalGallery">
+        <!-- Las imágenes se insertan dinámicamente -->
       </div>
     </div>
-  </section>
-
-  <section id="turismo">
-    <h2>Patrimonio y Turismo</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Zonas Arqueológicas</h3>
-        <p>Monumentos prehispánicos emblemáticos reconocidos a nivel global, entre ellos Chichén Itzá, Teotihuacán, Palenque y Monte Albán.</p>
-      </div>
-      <div class="card">
-        <h3>Pueblos Mágicos y Ciudades Coloniales</h3>
-        <p>Enclaves de gran riqueza patrimonial, tradiciones vivas y gastronomía típica como Oaxaca, San Miguel de Allende, Guanajuato y Taxco.</p>
-      </div>
-      <div class="card">
-        <h3>Riviera Maya y Costas del Pacífico</h3>
-        <p>Destinos de relevancia internacional por sus recursos naturales y playas, como Tulum, Cancún, Puerto Vallarta y Los Cabos.</p>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <footer>
     <p>Jornada Institucional — ISFD Cecilia Braslavsky</p>
   </footer>
 
   <script>
-    // URL de tu Web App desplegada en Google Apps Script
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyn1icOBbOHxysGDcwjls0ge7vIzxWdhtsrdrRIkROjCjTWBpDKoMdtToRCVCSj6TmWw/exec";
+    // -------------------------------------------------------------
+    // BASE DE DATOS DE CONTENIDOS EXTENDIDOS Y FOTOS REFERENCIALES
+    // -------------------------------------------------------------
+    const DATA_SECCIONES = {
+      prehispanica: {
+        categoria: "Historia",
+        titulo: "El Esplendor Prehispánico Mesoamericano",
+        texto: `Antes de la llegada de los colonizadores europeos, el territorio mexicano fue el hogar de complejas civilizaciones organizadas en ciudades-estado. 
 
-    let fotos = [];
-    let indiceActual = 0;
-    let intervaloRotacion = null;
-    const container = document.getElementById('sliderContainer');
-    const statusMsg = document.getElementById('statusMessage');
+Los Olmecas, considerados la cultura madre, sentaron las bases del calendario, el trabajo en piedra monumental y el juego de pelota. Posteriormente, los Mayas en la península de Yucatán y Centroamérica desarrollaron el sistema de escritura jeroglífica más avanzado de la América precolombina, cálculos astronómicos precisos sobre los ciclos solares y venusinos, y el uso del cero posicional en su matemática.
 
-    async function actualizarFotos() {
-      try {
-        const respuesta = await fetch(SCRIPT_URL);
-        const data = await respuesta.json();
+Hacia el período Posclásico, los Mexicas o Aztecas fundaron en 1325 su capital, México-Tenochtitlan, sobre un islote en el lago de Texcoco. Mediante un sofisticado sistema de agricultura en islas artificiales flotantes (chinampas) e ingeniería hidráulica de diques y calzadas, forjaron un imperio militar y comercial que dominó el Altiplano Central hasta la conquista.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1512813389649-acb9131ced20?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      virreinato: {
+        categoria: "Historia",
+        titulo: "Virreinato de Nueva España e Independencia",
+        texto: `La caída de Tenochtitlan en 1521 dio paso a 300 años de dominio colonial bajo el Virreinato de la Nueva España. Durante este tiempo se gestó un intenso sincretismo cultural, religioso y biológico. La arquitectura barroca novohispana floreció en iglesias y palacios, mientras la minería de plata (en Guanajuato y Zacatecas) sustentó las rutas comerciales del imperio español hacia Europa y Asia.
 
-        if (Array.isArray(data) && data.length > 0) {
-          const idsNuevos = data.map(f => f.id).join(',');
-          const idsActuales = fotos.map(f => f.id).join(',');
+A comienzos del siglo XIX, motivado por las ideas de la Ilustración y la ocupación napoleónica en España, el cura Miguel Hidalgo y Costilla dio el "Grito de Dolores" el 16 de septiembre de 1810. La lucha armada, conducida luego militarmente por José María Morelos y Pavón con su proclama "Sentimientos de la Nación", culminó en septiembre de 1821 con la entrada del Ejército Trigarante y la firma del acta de Independencia.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1543872084-c7bd3822856f?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      revolucion: {
+        categoria: "Historia",
+        titulo: "La Revolución Mexicana de 1910 y el Siglo XX",
+        texto: `Tras décadas de dictadura durante el "Porfiriato" (liderado por Porfirio Díaz), caracterizado por el progreso ferroviario e industrial pero a expensas de severas desigualdades y concentración de tierras, estalló en 1910 la Revolución Mexicana.
 
-          // Si hay fotos nuevas o es la primera carga
-          if (idsNuevos !== idsActuales) {
-            fotos = data;
-            renderizarCarrusel();
-          }
-        } else if (fotos.length === 0) {
-          statusMsg.textContent = "Aún no se han subido fotos a la carpeta de Drive.";
-        }
-      } catch (error) {
-        console.error("Error al obtener las fotos:", error);
-        if (fotos.length === 0) {
-          statusMsg.textContent = "Conectando con Google Drive...";
-        }
+Encabezada inicialmente por Francisco I. Madero bajo el lema del "Sufragio efectivo, no reelección", la rebelión sumó ejércitos campesinos masivos en el sur con Emiliano Zapata ("Tierra y Libertad") y en el norte con Francisco "Pancho" Villa. El conflicto concluyó formalmente con la proclamación de la Constitución Política de 1917 en Querétaro, pionera a nivel internacional al incorporar garantías sociales, educación laica y gratuita, y derechos laborales colectivos.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      relieve: {
+        categoria: "Geografía",
+        titulo: "Relieve Imponente: Sierras, Volcanes y Mesetas",
+        texto: `La fisonomía mexicana está modelada por una actividad tectónica y volcánica vigorosa. En los márgenes del país corren dos formaciones orográficas paralelas: la Sierra Madre Occidental y la Sierra Madre Oriental, las cuales encierran la Altiplanicie Mexicana (una meseta elevada donde se asienta gran parte de la población del país).
+
+A través del centro del territorio se extiende el Eje Neovolcánico Transversal, donde emergen los picos más altos de México: el Pico de Orizaba (Citlaltépetl, con 5.636 msnm), el Popocatépetl y el Iztaccíhuatl. Hacia el sur, la Sierra Madre del Sur bordea la cuenca del Pacífico, configurando valles profundos y cañones naturales imponentes como las Barrancas del Cobre en Chihuahua.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      ecosistemas: {
+        categoria: "Geografía",
+        titulo: "País Megadiverso: Selvas, Desiertos y Costas",
+        texto: `México forma parte del selecto grupo de 17 países "megadiversos", albergando entre el 10% y el 12% de las especies de plantas y animales del planeta. 
+
+Su condición de puente geográfico entre la región Neártica del norte y la Neotropical del sur genera biomas contrastantes:
+- El Gran Desierto de Altar y el Desierto de Chihuahua: dominados por matorrales xerófilos y cactáceas endémicas.
+- Selvas húmedas del sureste: como la Selva Lacandona en Chiapas, refugio de jaguares, guacamayas rojas y tapires.
+- Litorales marinos: bañados por el Océano Pacífico, el Golfo de California (bautizado por Jacques Cousteau como "el acuario del mundo") y las aguas cálidas del Mar Caribe.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      cdmx: {
+        categoria: "Ciudades",
+        titulo: "Ciudad de México: Corazón Político y Cultural",
+        texto: `Con más de 9 millones de habitantes en su casco central y más de 21 millones en su área metropolitana, la Ciudad de México se ubica a 2.240 metros sobre el nivel del mar.
+
+Es una de las ciudades con mayor cantidad de museos en el mundo (destacando el Museo Nacional de Antropología y el Museo Frida Kahlo en Coyoacán). Su Centro Histórico gira alrededor del Zócalo (Plaza de la Constitución), flanqueado por la Catedral Metropolitana y las ruinas visibles del Templo Mayor azteca. Otros puntos de referencia son el Paseo de la Reforma, el Palacio de Bellas Artes y el Bosque de Chapultepec.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      guadalajara: {
+        categoria: "Ciudades",
+        titulo: "Guadalajara: Tradición Tapatía y Polo Tecnológico",
+        texto: `Capital del estado de Jalisco, Guadalajara combina su patrimonio arquitectónico virreinal con un presente tecnológico e industrial que le ha valido el apodo de "el Silicon Valley mexicano".
+
+En ella nacieron muchas de las representaciones más icónicas de la mexicanidad: la música vernácula del mariachi, las vestimentas tradicionales de charro y las haciendas productoras de tequila en sus valles aledaños. Su Teatro Degollado, la Catedral de torres gemelas y el Instituto Cultural Cabañas (con los murales magistrales de José Clemente Orozco) son paradas culturales obligadas.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1543872084-c7bd3822856f?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      monterrey: {
+        categoria: "Ciudades",
+        titulo: "Monterrey: Motor Productivo del Norte",
+        texto: `Ubicada en el estado de Nuevo León, Monterrey es la capital industrial del país. Rodeada por la Sierra Madre Oriental y vigilada por la silueta inconfundible del Cerro de la Silla, destaca por su cultura del trabajo, innovación siderúrgica y sedes de las empresas multinacionales más grandes de México.
+
+Entre sus espacios más visitados se encuentran el Parque Fundidora (un antiguo complejo metalúrgico transformado en pulmón verde y centro cultural), el Paseo Santa Lucía (un canal navegable artificial) y la Macroplaza, una de las plazas públicas más extensas del planeta.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      chichen: {
+        categoria: "Turismo",
+        titulo: "Zonas Arqueológicas y Pirámides Sagradas",
+        texto: `El territorio mexicano reúne miles de sitios arqueológicos abiertos a la investigación y el turismo. Entre ellos sobresale Chichén Itzá, en Yucatán, declarada una de las Nuevas Siete Maravillas del Mundo Moderno; su pirámide de Kukulkán ("El Castillo") proyecta durante los equinoccios una sombra que simula el descenso de una serpiente emplumada por sus escalinatas.
+
+En el centro del país, Teotihuacán deslumbra con la Calzada de los Muertos y las colosales Pirámides del Sol y de la Luna. Hacia el sur, Palenque en Chiapas ilustra la conjunción entre la selva tropical y la arquitectura funeraria maya, mientras que Monte Albán en Oaxaca se alza sobre una meseta artificialmente aplanada por los zapotecas.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1512813389649-acb9131ced20?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      caribe: {
+        categoria: "Turismo",
+        titulo: "Caribe Mexicano, Cenotes y la Riviera Maya",
+        texto: `El litoral del estado de Quintana Roo conforma uno de los polos turísticos de sol y playa más relevantes del mundo. La Riviera Maya y Cancún destacan por sus arenas blancas de origen coralino y sus aguas azul turquesa.
+
+Un rasgo geológico único de esta península son los **cenotes**: redes de cavernas subterráneas inundadas colapsadas de agua dulce, consideradas entradas al inframundo (Xibalbá) por la civilización maya. Destinos como Tulum combinan ruinas arqueológicas emplazadas directamente frente a acantilados marinos, junto con reservas de la biosfera como Sian Ka'an.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80"
+        ]
+      },
+      cultura: {
+        categoria: "Turismo y Cultura",
+        titulo: "Patrimonio Inmaterial, Gastronomía y Tradiciones",
+        texto: `La cultura popular mexicana está reconocida universalmente por su vitalidad e identidad:
+
+1. **Día de Muertos:** Declarado Patrimonio Inmaterial de la Humanidad por la UNESCO, se celebra el 1 y 2 de noviembre. Es un ritual sincrético de recuerdo festivo donde las familias colocan ofrendas y altares con flores de cempasúchil, papel picado, velas, pan de muerto y fotografías de los seres queridos.
+2. **Gastronomía Tradicional:** Una de las pocas cocinas nacionales con denominación de Patrimonio Cultural Inmaterial. Sus pilares milenarios (maíz, frijol, chile y calabaza) dan vida a elaboraciones complejas como el mole poblano, los tacos en sus diversas variantes regionales, los tamales y el pozole.
+3. **Pueblos Mágicos:** Un programa oficial que reconoce poblados con arquitectura colonial intacta, artesanías típicas y leyendas vivas, como San Miguel de Allende, Taxco o Pátzcuaro.`,
+        fotos: [
+          "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=600&q=80"
+        ]
+      }
+    };
+
+    // -------------------------------------------------------------
+    // FUNCIONES DEL MODAL / VISTA DESPLEGABLE
+    // -------------------------------------------------------------
+    const overlay = document.getElementById('detailOverlay');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalGallery = document.getElementById('modalGallery');
+
+    function abrirDetalle(clave) {
+      const info = DATA_SECCIONES[clave];
+      if (!info) return;
+
+      modalCategory.textContent = info.categoria;
+      modalTitle.textContent = info.titulo;
+      modalBody.textContent = info.texto;
+
+      // Cargar fotos referenciales del tema
+      modalGallery.innerHTML = '';
+      info.fotos.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = info.titulo;
+        modalGallery.appendChild(img);
+      });
+
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+    }
+
+    function cerrarDetalle() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restaura el scroll
+    }
+
+    function cerrarDetalleFuera(e) {
+      if (e.target === overlay) {
+        cerrarDetalle();
       }
     }
 
-    function renderizarCarrusel() {
+    // Cerrar también con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarDetalle();
+    });
+
+    // -------------------------------------------------------------
+    // INTEGRACIÓN CON GOOGLE APPS SCRIPT / GOOGLE DRIVE EN VIVO
+    // -------------------------------------------------------------
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyn1icOBbOHxysGDcwjls0ge7vIzxWdhtsrdrRIkROjCjTWBpDKoMdtToRCVCSj6TmWw/exec";
+
+    let fotosLive = [];
+    let indiceLive = 0;
+    let timerSlider = null;
+    const container = document.getElementById('sliderContainer');
+    const statusMsg = document.getElementById('statusMessage');
+
+    async function actualizarFotosDrive() {
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'GET',
+          redirect: 'follow'
+        });
+        const data = await res.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+          const idsNuevos = data.map(f => f.id).join(',');
+          const idsActuales = fotosLive.map(f => f.id).join(',');
+
+          if (idsNuevos !== idsActuales) {
+            fotosLive = data;
+            renderizarSliderLive();
+          }
+        } else if (fotosLive.length === 0) {
+          statusMsg.textContent = "Carpeta conectada. Esperando que se suban fotos...";
+        }
+      } catch (err) {
+        console.warn("Aviso de carga de fotos:", err);
+      }
+    }
+
+    function renderizarSliderLive() {
       container.innerHTML = '';
-      
-      fotos.forEach((foto, i) => {
+      fotosLive.forEach((foto, i) => {
         const slide = document.createElement('div');
         slide.className = `slide ${i === 0 ? 'active' : ''}`;
         slide.innerHTML = `
-          <img src="${foto.url}" alt="${foto.name || 'Foto de la jornada'}">
-          <div class="slide-caption">Jornada Institucional — En vivo</div>
+          <img src="${foto.url}" alt="${foto.name || 'Foto del evento'}">
+          <div class="slide-caption">Jornada Institucional — Cobertura en Vivo</div>
         `;
         container.appendChild(slide);
       });
 
-      indiceActual = 0;
-
-      // Reiniciar intervalo de rotación
-      if (intervaloRotacion) clearInterval(intervaloRotacion);
-      if (fotos.length > 1) {
-        intervaloRotacion = setInterval(avanzarSlide, 5000); // Rota cada 5 segundos
+      indiceLive = 0;
+      if (timerSlider) clearInterval(timerSlider);
+      if (fotosLive.length > 1) {
+        timerSlider = setInterval(rotarFotoLive, 5000);
       }
     }
 
-    function avanzarSlide() {
-      const slides = document.querySelectorAll('.slide');
+    function rotarFotoLive() {
+      const slides = document.querySelectorAll('.slider-container .slide');
       if (slides.length <= 1) return;
 
-      slides[indiceActual].classList.remove('active');
-      indiceActual = (indiceActual + 1) % slides.length;
-      slides[indiceActual].classList.add('active');
+      slides[indiceLive].classList.remove('active');
+      indiceLive = (indiceLive + 1) % slides.length;
+      slides[indiceLive].classList.add('active');
     }
 
-    // Consulta inicial inmediata
-    actualizarFotos();
-
-    // Consulta la carpeta cada 20 segundos para sumar fotos nuevas automáticamente
-    setInterval(actualizarFotos, 20000);
+    // Primera carga y chequeo periódico cada 20 segundos
+    actualizarFotosDrive();
+    setInterval(actualizarFotosDrive, 20000);
   </script>
 </body>
 </html>
